@@ -14,7 +14,6 @@ def read_yaml_file(file_path: str) -> dict:
     try:
         with open(file_path, "rb") as yaml_file:
             return yaml.safe_load(yaml_file)
-
     except Exception as e:
         raise RoundupException(e, sys) from e
 
@@ -35,14 +34,11 @@ def load_object(file_path: str) -> object:
     logging.info("Entered the load_object method of utils")
 
     try:
-
         with open(file_path, "rb") as file_obj:
             obj = dill.load(file_obj)
 
         logging.info("Exited the load_object method of utils")
-
         return obj
-
     except Exception as e:
         raise RoundupException(e, sys) from e
 
@@ -83,7 +79,6 @@ def save_object(file_path: str, obj: object) -> None:
             dill.dump(obj, file_obj)
 
         logging.info("Exited the save_object method of utils")
-
     except Exception as e:
         raise RoundupException(e, sys) from e
 
@@ -99,9 +94,7 @@ def drop_columns(df: DataFrame, cols: list)-> DataFrame:
 
     try:
         df = df.drop(columns=cols, axis=1)
-
         logging.info("Exited the drop_columns method of utils")
-        
         return df
     except Exception as e:
         raise RoundupException(e, sys) from e
